@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sozluk App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ingilizce">İngilizce</string>
+    <string name="turkce">Türkçe</string>
+    <string name="kaydet">Kaydet</string>
+    <string name="sil">Sil</string>
+</resources>
