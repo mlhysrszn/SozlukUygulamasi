@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.sozlukapp.data.Kelimeler
@@ -55,5 +56,11 @@ class AnaFragment : Fragment() {
 
         adapter = KelimelerAdapter(kelimelerListe)
         rv.adapter = adapter
+
+        binding.fabEkle.setOnClickListener {
+            it.findNavController().navigate(R.id.action_anaFragment_to_ekleFragment)
+
+        }
+
     }
 }
