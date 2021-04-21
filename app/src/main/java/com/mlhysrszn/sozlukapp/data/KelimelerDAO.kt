@@ -39,14 +39,14 @@ class KelimelerDAO {
     }
 
     fun kelimeKaydet(dbh: Database, kelimeIngilizce: String, kelimeTurkce: String) {
-        //todo
+
         val db = dbh.writableDatabase
         val values = ContentValues()
 
         values.put("ingilizce", kelimeIngilizce)
         values.put("turkce", kelimeTurkce)
 
-        db.insertOrThrow("kisiler",null,values)
+        db.insert("kelimeler",null,values)
         db.close()
 
     }

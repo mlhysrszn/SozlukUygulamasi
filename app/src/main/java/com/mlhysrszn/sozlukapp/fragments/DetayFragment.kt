@@ -32,10 +32,16 @@ class DetayFragment : Fragment() {
 
         binding = FragmentDetayBinding.bind(view)
 
+        arguments?.let {
+            val ingilizce = DetayFragmentArgs.fromBundle(it).ingilizce
+            val turkce = DetayFragmentArgs.fromBundle(it).turkce
+
+            binding.textViewIngilizce.text = ingilizce
+            binding.textViewTurkce.text = turkce
+        }
+
         binding.buttonSil.setOnClickListener {
             Toast.makeText(context,"Silindi",Toast.LENGTH_SHORT).show()
         }
     }
-
-
 }

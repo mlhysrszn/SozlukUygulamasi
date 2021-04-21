@@ -21,7 +21,16 @@
         android:id="@+id/detayFragment"
         android:name="com.mlhysrszn.sozlukapp.fragments.DetayFragment"
         android:label="fragment_detay"
-        tools:layout="@layout/fragment_detay" />
+        tools:layout="@layout/fragment_detay" >
+        <argument
+            android:name="ingilizce"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="turkce"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/ekleFragment"
         android:name="com.mlhysrszn.sozlukapp.fragments.EkleFragment"

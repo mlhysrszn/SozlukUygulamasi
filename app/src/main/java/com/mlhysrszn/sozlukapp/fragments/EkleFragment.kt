@@ -6,17 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.mlhysrszn.sozlukapp.R
+import com.mlhysrszn.sozlukapp.data.Database
+import com.mlhysrszn.sozlukapp.data.KelimelerDAO
 import com.mlhysrszn.sozlukapp.databinding.FragmentEkleBinding
 
 class EkleFragment : Fragment() {
     
     private lateinit var binding: FragmentEkleBinding
+    private lateinit var dbh: Database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        dbh = Database(requireContext())
     }
 
     override fun onCreateView(
@@ -30,15 +35,18 @@ class EkleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEkleBinding.bind(view)
-        
-        val kelimeTurkce = binding.editTextTurkce.text
-        val kelimeIngilizce = binding.editTextIngilizce.text
+
         
         binding.buttonKaydet.setOnClickListener{
             Toast.makeText(context,"Eklendi",Toast.LENGTH_SHORT).show()
-            // TODO: 4/18/2021
 
-            it.findNavController().navigate(R.id.action_ekleFragment_to_anaFragment)
+            val kelimeTurkce = binding.editTextTurkce.text.toString()
+            val kelimeIngilizce = binding.editTextIngilizce.text.toString()
+
+            KelimelerDAO().kelimeKaydet(dbh,kelimeIngilizce,kelimeTurkce)
+
+            val action = EkleFragmentDirections.actionEkleFragmentToAnaFragment()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 

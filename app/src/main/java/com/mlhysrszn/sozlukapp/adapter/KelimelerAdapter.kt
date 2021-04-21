@@ -2,11 +2,12 @@ package com.mlhysrszn.sozlukapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.sozlukapp.data.Kelimeler
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.databinding.CardTasarimBinding
+import com.mlhysrszn.sozlukapp.fragments.AnaFragmentDirections
 
 class KelimelerAdapter(private val kelimelerListe: List<Kelimeler>) :
     RecyclerView.Adapter<KelimelerAdapter.ViewHolder>() {
@@ -34,11 +35,14 @@ class KelimelerAdapter(private val kelimelerListe: List<Kelimeler>) :
         holder.turkceText.text = kelime.turkce
 
         holder.kelimeCard.setOnClickListener {
-            it.findNavController().navigate(R.id.action_anaFragment_to_detayFragment)
+            val action = AnaFragmentDirections.actionAnaFragmentToDetayFragment(kelime.ingilizce,kelime.turkce)
+            Navigation.findNavController(it).navigate(action)
         }
     }
 
     override fun getItemCount(): Int {
         return kelimelerListe.size
     }
+
+
 }

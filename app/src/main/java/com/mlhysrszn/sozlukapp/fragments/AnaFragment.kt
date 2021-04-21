@@ -5,12 +5,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.sozlukapp.data.Kelimeler
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.adapter.KelimelerAdapter
+import com.mlhysrszn.sozlukapp.data.Database
+import com.mlhysrszn.sozlukapp.data.KelimelerDAO
 import com.mlhysrszn.sozlukapp.databinding.FragmentAnaBinding
 
 class AnaFragment : Fragment() {
@@ -19,10 +22,16 @@ class AnaFragment : Fragment() {
     private lateinit var adapter: KelimelerAdapter
     private lateinit var kelimelerListe: ArrayList<Kelimeler>
     private lateinit var rv: RecyclerView
+    private lateinit var dbh: Database
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        dbh = Database(requireContext())
+        kelimelerListe = KelimelerDAO().tumKelimeler(dbh)
+
+
+/*
         val k1 = Kelimeler(1,"Door","Kapı")
         val k2 = Kelimeler(2,"Door","Kapı")
         val k3 = Kelimeler(3,"Door","Kapı")
@@ -35,6 +44,9 @@ class AnaFragment : Fragment() {
         kelimelerListe.add(k3)
         kelimelerListe.add(k4)
         kelimelerListe.add(k5)
+
+ */
+
 
     }
 
@@ -58,9 +70,8 @@ class AnaFragment : Fragment() {
         rv.adapter = adapter
 
         binding.fabEkle.setOnClickListener {
-            it.findNavController().navigate(R.id.action_anaFragment_to_ekleFragment)
-
+            val action = AnaFragmentDirections.actionAnaFragmentToEkleFragment()
+            Navigation.findNavController(it).navigate(action)
         }
-
     }
 }
