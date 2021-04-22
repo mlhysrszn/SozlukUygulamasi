@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.data.Database
 import com.mlhysrszn.sozlukapp.data.KelimelerDAO
@@ -18,7 +16,7 @@ class DetayFragment : Fragment() {
 
     private lateinit var binding: FragmentDetayBinding
     private lateinit var dbh: Database
-    private var kelime_id: Int = 0
+    private var kelimeId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +37,17 @@ class DetayFragment : Fragment() {
 
         binding = FragmentDetayBinding.bind(view)
 
+        binding.toolbarDetay.title = "Sözlük Uygulaması"
+        binding.toolbarDetay.setNavigationIcon(R.drawable.ic_back)
+        binding.toolbarDetay.setNavigationOnClickListener {
+            val action = DetayFragmentDirections.actionDetayFragmentToAnaFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+
         arguments?.let {
             val ingilizce = DetayFragmentArgs.fromBundle(it).ingilizce
             val turkce = DetayFragmentArgs.fromBundle(it).turkce
-            kelime_id = DetayFragmentArgs.fromBundle(it).kelimeId
+            kelimeId = DetayFragmentArgs.fromBundle(it).kelimeId
 
             binding.textViewIngilizce.text = ingilizce
             binding.textViewTurkce.text = turkce
@@ -51,7 +56,7 @@ class DetayFragment : Fragment() {
         binding.buttonSil.setOnClickListener {
             Toast.makeText(context,"Silindi",Toast.LENGTH_SHORT).show()
 
-            KelimelerDAO().kelimesil(dbh,kelime_id)
+            KelimelerDAO().kelimesil(dbh,kelimeId)
             val action = DetayFragmentDirections.actionDetayFragmentToAnaFragment()
             Navigation.findNavController(it).navigate(action)
         }

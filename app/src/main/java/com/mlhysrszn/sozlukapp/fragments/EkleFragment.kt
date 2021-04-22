@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.data.Database
 import com.mlhysrszn.sozlukapp.data.KelimelerDAO
@@ -36,6 +35,14 @@ class EkleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEkleBinding.bind(view)
 
+        binding.toolbarEkle.title = "Sözlük Uygulaması"
+
+        binding.toolbarEkle.setNavigationIcon(R.drawable.ic_back)
+        binding.toolbarEkle.setNavigationOnClickListener {
+            val action = EkleFragmentDirections.actionEkleFragmentToAnaFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+
         
         binding.buttonKaydet.setOnClickListener{
             Toast.makeText(context,"Eklendi",Toast.LENGTH_SHORT).show()
@@ -49,6 +56,4 @@ class EkleFragment : Fragment() {
             Navigation.findNavController(it).navigate(action)
         }
     }
-
-
 }
