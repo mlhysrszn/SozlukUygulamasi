@@ -50,4 +50,12 @@ class KelimelerDAO {
         db.close()
 
     }
+
+    fun kelimesil(dbh: Database, kelime_id: Int){
+
+        val db = dbh.writableDatabase
+        db.delete("kelimeler", "kelime_id=$kelime_id", null)
+        db.close()
+
+    }
 }

@@ -12,10 +12,12 @@
         tools:layout="@layout/fragment_ana" >
         <action
             android:id="@+id/action_anaFragment_to_ekleFragment"
-            app:destination="@id/ekleFragment" />
+            app:destination="@id/ekleFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
         <action
             android:id="@+id/action_anaFragment_to_detayFragment"
-            app:destination="@id/detayFragment" />
+            app:destination="@id/detayFragment"
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
         android:id="@+id/detayFragment"
@@ -30,6 +32,13 @@
             android:name="turkce"
             app:argType="string"
             app:nullable="true" />
+        <argument
+            android:name="kelime_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_detayFragment_to_anaFragment"
+            app:destination="@id/anaFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
     <fragment
         android:id="@+id/ekleFragment"
@@ -38,6 +47,7 @@
         tools:layout="@layout/fragment_ekle" >
         <action
             android:id="@+id/action_ekleFragment_to_anaFragment"
-            app:destination="@id/anaFragment" />
+            app:destination="@id/anaFragment"
+            app:enterAnim="@android:anim/slide_in_left" />
     </fragment>
 </navigation>

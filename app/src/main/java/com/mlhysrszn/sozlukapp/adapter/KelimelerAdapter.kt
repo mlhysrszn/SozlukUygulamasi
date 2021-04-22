@@ -35,7 +35,7 @@ class KelimelerAdapter(private val kelimelerListe: List<Kelimeler>) :
         holder.turkceText.text = kelime.turkce
 
         holder.kelimeCard.setOnClickListener {
-            val action = AnaFragmentDirections.actionAnaFragmentToDetayFragment(kelime.ingilizce,kelime.turkce)
+            val action = AnaFragmentDirections.actionAnaFragmentToDetayFragment(kelime.ingilizce,kelime.turkce,kelime.kelime_id)
             Navigation.findNavController(it).navigate(action)
         }
     }

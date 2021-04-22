@@ -6,17 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.mlhysrszn.sozlukapp.R
+import com.mlhysrszn.sozlukapp.data.Database
+import com.mlhysrszn.sozlukapp.data.KelimelerDAO
 import com.mlhysrszn.sozlukapp.databinding.FragmentDetayBinding
 
 class DetayFragment : Fragment() {
 
     private lateinit var binding: FragmentDetayBinding
+    private lateinit var dbh: Database
+    private var kelime_id: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        dbh = Database(requireContext())
     }
 
     override fun onCreateView(
@@ -35,6 +42,7 @@ class DetayFragment : Fragment() {
         arguments?.let {
             val ingilizce = DetayFragmentArgs.fromBundle(it).ingilizce
             val turkce = DetayFragmentArgs.fromBundle(it).turkce
+            kelime_id = DetayFragmentArgs.fromBundle(it).kelimeId
 
             binding.textViewIngilizce.text = ingilizce
             binding.textViewTurkce.text = turkce
@@ -42,6 +50,10 @@ class DetayFragment : Fragment() {
 
         binding.buttonSil.setOnClickListener {
             Toast.makeText(context,"Silindi",Toast.LENGTH_SHORT).show()
+
+            KelimelerDAO().kelimesil(dbh,kelime_id)
+            val action = DetayFragmentDirections.actionDetayFragmentToAnaFragment()
+            Navigation.findNavController(it).navigate(action)
         }
     }
 }
