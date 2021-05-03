@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.data.Database
 import com.mlhysrszn.sozlukapp.data.KelimelerDAO
@@ -21,6 +23,13 @@ class EkleFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         dbh = Database(requireContext())
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_ekleFragment_to_anaFragment)
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(this, callback)
     }
 
     override fun onCreateView(
@@ -35,15 +44,6 @@ class EkleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentEkleBinding.bind(view)
 
-        binding.toolbarEkle.title = "Sözlük Uygulaması"
-
-        binding.toolbarEkle.setNavigationIcon(R.drawable.ic_back)
-        binding.toolbarEkle.setNavigationOnClickListener {
-            val action = EkleFragmentDirections.actionEkleFragmentToAnaFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        
         binding.buttonKaydet.setOnClickListener{
             Toast.makeText(context,"Eklendi",Toast.LENGTH_SHORT).show()
 

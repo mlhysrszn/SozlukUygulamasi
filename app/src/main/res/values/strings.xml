@@ -6,4 +6,6 @@
     <string name="turkce">Türkçe</string>
     <string name="kaydet">Kaydet</string>
     <string name="sil">Sil</string>
+    <string name="ara">Ara</string>
+    <string name="ekle_butonu">Ekle Butonu</string>
 </resources>

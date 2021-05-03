@@ -18,6 +18,7 @@ class KelimelerDAO {
             )
             kelimelerListe.add(kelime)
         }
+        c.close()
         return kelimelerListe
     }
 
@@ -25,7 +26,7 @@ class KelimelerDAO {
         val kelimelerListe = ArrayList<Kelimeler>()
 
         val db = dbh.readableDatabase
-        val c = db.rawQuery("SELECT * FROM kelimeler WHERE ingilizce LIKE '$arananKelime'", null)
+        val c = db.rawQuery("SELECT * FROM kelimeler WHERE ingilizce LIKE '%$arananKelime%'", null)
 
         while (c.moveToNext()) {
             val kelime = Kelimeler(
@@ -35,6 +36,7 @@ class KelimelerDAO {
             )
             kelimelerListe.add(kelime)
         }
+        c.close()
         return kelimelerListe
     }
 

@@ -6,15 +6,6 @@
     android:orientation="vertical"
     tools:context=".fragments.DetayFragment">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarDetay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
     <TextView
         android:id="@+id/textViewIngilizce"
         android:layout_width="match_parent"

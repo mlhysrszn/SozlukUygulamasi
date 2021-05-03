@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.mlhysrszn.sozlukapp.data.Kelimeler
-import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.databinding.CardTasarimBinding
 import com.mlhysrszn.sozlukapp.fragments.AnaFragmentDirections
 
@@ -13,11 +12,9 @@ class KelimelerAdapter(private val kelimelerListe: List<Kelimeler>) :
     RecyclerView.Adapter<KelimelerAdapter.ViewHolder>() {
 
     inner class ViewHolder(binding: CardTasarimBinding) : RecyclerView.ViewHolder(binding.root) {
-
         val ingilizceText = binding.cardTextIngilizce
         val turkceText = binding.cardTextTurkce
         val kelimeCard = binding.root
-
     }
 
     override fun onCreateViewHolder(
@@ -43,6 +40,5 @@ class KelimelerAdapter(private val kelimelerListe: List<Kelimeler>) :
     override fun getItemCount(): Int {
         return kelimelerListe.size
     }
-
 
 }

@@ -1,12 +1,14 @@
 package com.mlhysrszn.sozlukapp.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.data.Database
 import com.mlhysrszn.sozlukapp.data.KelimelerDAO
@@ -20,8 +22,14 @@ class DetayFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         dbh = Database(requireContext())
+
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                findNavController().navigate(R.id.action_detayFragment_to_anaFragment)
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(this, callback)
     }
 
     override fun onCreateView(
@@ -36,13 +44,6 @@ class DetayFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentDetayBinding.bind(view)
-
-        binding.toolbarDetay.title = "Sözlük Uygulaması"
-        binding.toolbarDetay.setNavigationIcon(R.drawable.ic_back)
-        binding.toolbarDetay.setNavigationOnClickListener {
-            val action = DetayFragmentDirections.actionDetayFragmentToAnaFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
 
         arguments?.let {
             val ingilizce = DetayFragmentArgs.fromBundle(it).ingilizce
