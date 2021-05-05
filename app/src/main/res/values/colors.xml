@@ -9,4 +9,8 @@
     <color name="white">#f2f2f2</color>
     <color name="toolbar">#8E7DFA</color>
     <color name="toolbar2">#B8ADFB</color>
+    <color name="toolbar3">#B8ADFB</color>
+
+    <color name="card_view">#DFE9FA</color>
+    <color name="card_view_dark">#262E3A</color>
 </resources>

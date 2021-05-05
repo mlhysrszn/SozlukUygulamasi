@@ -12,5 +12,22 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="cardBackgroundColor">@color/card_view</item>
+        <item name="buttonTint">@color/toolbar</item>
+    </style>
+    <style name="EngText">
+        <item name="android:textColor">#F95A5A</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="CardStyle">
+        <item name="cardBackgroundColor">@color/card_view</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="cardCornerRadius">16dp</item>
+    </style>
+    <style name="ButtonStyle">
+        <item name="backgroundTint">@color/toolbar</item>
+    </style>
+    <style name="TurText">
+        <item name="android:textColor">@color/black</item>
     </style>
 </resources>

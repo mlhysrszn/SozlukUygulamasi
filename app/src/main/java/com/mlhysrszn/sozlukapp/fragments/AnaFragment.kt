@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mlhysrszn.sozlukapp.MainActivity
+import com.mlhysrszn.sozlukapp.activity.MainActivity
 import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.adapter.KelimelerAdapter
 import com.mlhysrszn.sozlukapp.data.Database
