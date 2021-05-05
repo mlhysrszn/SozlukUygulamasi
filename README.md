@@ -1,5 +1,5 @@
 # SozlukUygulamasi
-Kendimi geliştirmek amacıyla Udemy kursundaki bir örnekten esinlenip yaptığım basit bir sözlük uygulaması.
+Kendimi geliştirmek amacıyla Kasım Adalan Hocanın Udemy kursundaki bir örnekten esinlenip yaptığım basit bir sözlük uygulaması.
 
 # Başlıca Kullandığım Yapılar
 - Fragment
