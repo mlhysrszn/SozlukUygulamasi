@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.animation.AnimationUtils
+import com.mlhysrszn.sozlukapp.R
 import com.mlhysrszn.sozlukapp.data.Kelimeler
 import com.mlhysrszn.sozlukapp.databinding.CardTasarimBinding
 import com.mlhysrszn.sozlukapp.fragments.AnaFragmentDirections
@@ -30,6 +32,8 @@ class KelimelerAdapter(private val kelimelerListe: List<Kelimeler>) :
 
         holder.ingilizceText.text = kelime.ingilizce
         holder.turkceText.text = kelime.turkce
+
+        holder.kelimeCard.animation = android.view.animation.AnimationUtils.loadAnimation(holder.kelimeCard.context,R.anim.rv_anim)
 
         holder.kelimeCard.setOnClickListener {
             val action = AnaFragmentDirections.actionAnaFragmentToDetayFragment(kelime.ingilizce,kelime.turkce,kelime.kelime_id)
